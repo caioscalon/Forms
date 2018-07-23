@@ -1,105 +1,121 @@
 <!DOCTYPE html>
+
 <html>
-<head>
-  <title>Forms SMS</title>
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-  <link href="css/forms.css" rel="stylesheet" type="text/css" media="all" />	
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
+  <head>
+    <title> Forms SMS </title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/forms.css" rel="stylesheet" type="text/css" media="all"/>	
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  </head>
 
-<body>
+  <body>
 
-  <!-- Barra superior -->
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span> 
-        </button>
-        <a class="navbar-brand" href="test.html" style="padding:0px;">
-          <img src="./src/pmi.jpg" style="height:100%">
-          <span class="navbar-text">
-            <div class="nav-row">
-              <font size="2.3"> SECRETARIA MUNICIPAL DE SAÚDE DE ITABIRA </font>
+    <!-- Barra superior -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </button>
+          <a class="navbar-brand" style="padding:0px;">
+            <img src="./src/pmi.png" style="height:100%">
+            <div class='navbar-brand' style="padding-top: 5px; padding-left: 20px">
+              <span class='navbar-title'>
+                <font size="2.3"> SECRETARIA MUNICIPAL DE SAÚDE DE ITABIRA </font>
+                <br>
+                <font size="2"> Diretoria de Monitoramento e Apoio à Gestão </font>
+              </span>
             </div>
-            <div class="nav-row">
-              <font size="2"> Diretoria de Monitoramento e Apoio à Gestão </font>
-            </div>
-          </span>
-        </a>
+            <!--span class="navbar-text">
+              <div class="nav-row">
+                <font size="2.3"> SECRETARIA MUNICIPAL DE SAÚDE DE ITABIRA </font>
+              </div>
+              <div class="nav-row">
+                <font size="2"> Diretoria de Monitoramento e Apoio à Gestão </font>
+              </div>
+            </span-->
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="index.html">
+                <span class="glyphicon glyphicon-home"></span> Início 
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span> Início </a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Login -->
-  <div class="container">
-    <div class="row main">
-      <div class="col-md-4 col-xs-offset-4">
-        <div class="panel-heading">
-          <div class="panel-title text-center">
-            <h1 class="title"> Insira seus dados: </h1> <hr>
+    <!-- Login -->
+    <div class="container">
+      <div class="row main">
+        <div class="col-md-4 col-xs-offset-4">
+          <div class="panel-heading">
+            <div class="panel-title text-center">
+              <h1 class="title"> Insira seus dados: </h1> <hr>
+            </div>
+          </div> 
+
+          <div class="main-login main-center">
+            <form class="form-horizontal" method="POST" action="./php/login.php" id="reg_form"> 
+              <div class="form-group">
+                <label class="cols-sm-2 control-label" for="usuario"> Usuário: </label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-user"></span>
+                      <i class="fa fa-user fa" aria-hidden="true"></i>
+                    </span>
+                    <input class="form-control" type="text" name="usuario" id="usuario"  placeholder="Insira seu nome de usuário..."/>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="cols-sm-2 control-label" for="senha"> Senha: </label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-lock"></span>
+                      <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                    </span>
+                    <input class="form-control" type="password" name="senha" id="senha" placeholder="Insira sua senha..."/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="checkbox">
+                <label><input type="checkbox" name="remember"> Lembrar-me </label>
+              </div> -->
+
+              <div class="form-group">
+                <button class="btn btn-primary btn-lg btn-block login-button" type="submit" style="margin-top: 25px" name="btnLog" id="btnLog"> Login </button>
+              </div>
+
+              <!--div class="login-register">
+                  <a href="#"> Esqueceu sua senha? </a>
+              </div-->
+            </form>
           </div>
-        </div> 
-
-        <div class="main-login main-center">
-          <form class="form-horizontal" method="POST" action="./php/login.php" id="reg_form"> 
-            <div class="form-group">
-              <label for="usuario" class="cols-sm-2 control-label"> Usuário: </label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="usuario" id="usuario"  placeholder="Insira seu nome de usuário..."/>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="senha" class="cols-sm-2 control-label"> Senha: </label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                  <input type="password" class="form-control" name="senha" id="senha" placeholder="Insira sua senha..."/>
-                </div>
-              </div>
-            </div>
-
-            <div class="checkbox">
-              <label><input type="checkbox" name="lembrar_me"> Lembrar-me </label>
-            </div>
-
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-lg btn-block login-button" style="margin-top: 25px" name="btnLog" id="btnLog"> Login </button>
-            </div>
-
-            <div class="login-register">
-                <a href="#"> Esqueceu sua senha? </a>
-            </div>
-          </form>
         </div>
       </div>
     </div>
-  </div>
 
-		
+    <!-- Rodapé -->
+    <footer>
+      <p><font size="3"> Em desenvolvimento </font></p>
+    </footer>
 
-  <!-- Rodapé -->
-  <footer>
-    <p><font size="3"> Em desenvolvimento </font></p>
-  </footer>
+    <!-- Scripts -->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src='./js/bootstrapvalidator.min.js'></script>
+    <script src="./js/index.js"></script>
 
- 
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/bootstrap.min.js"></script>
-  <script src='./js/bootstrapvalidator.min.js'></script>
-  <script src="./js/index.js"></script>
-
-</body>
+  </body>
 </html>

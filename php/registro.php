@@ -1,17 +1,6 @@
 <?php
     require_once "./connectBD.php";
 
-    // $coordMun = $_POST['coordMun'];
-    // $ouvidSMS = $_POST['ouvidSMS'];
-    // $supAcoes = $_POST['supAcoes'];
-    // $supAdm = $_POST['supAdm'];
-    // $supAssist = $_POST['supAssist'];
-    // $supAtSec = $_POST['supAtSec'];
-    // $supAtTerc = $_POST['supAtTerc'];
-    // $supPlan = $_POST['supPlan'];
-    // $supReg = $_POST['supReg'];
-    // $supVig = $_POST['supVig'];
-
     $assunto = $_POST['assunto'];
     $numero = $_POST['numero'];
     $dataReg = $_POST['dataReg'];
@@ -21,89 +10,85 @@
     $recurso = $_POST['recurso'];
     $consideracoes = $_POST['consideracoes'];
     $entrega = $_POST['entrega'];
+    $acompanhamento = $_POST['acompanhamento'];
 
     $registrar = $_POST['btnReg'];
-
     
+    // Tipo
     if(isset($_POST['optradio'])){
         $tipoReg = $_POST['optradio'];
-    }
+    } 
 
-    if(  isset($registrar) ){     
-        $sql = "INSERT INTO `registro` (`REGISTRO_ID`, `TIPO`, `ASSUNTO`, `NUMERO`, `DATA_`, `URL_`, `RESUMO`, `OBJETO`, `RECURSO`, `CONSIDERACAO`, `RECEPTOR`) VALUES (NULL, '".$tipoReg."', '".$assunto."', '".$numero."', '".$dataReg."', '".$url."', '".$resumo."', '".$resolve."', '".$recurso."', '".$consideracoes."', '".$entrega."');";
+    if(isset($registrar)){  
+        // Registro        
+        $sql = "INSERT INTO `registro` (`REGISTRO_ID`, `TIPO`, `ASSUNTO`, `NUMERO`, `DATA_`, `URL_`, `RESUMO`, `OBJETO`, `RECURSO`, `CONSIDERACAO`, `RECEPTOR`, `ACOMPANHAMENTO`) VALUES (NULL, '".$tipoReg."', '".$assunto."', '".$numero."', '".$dataReg."', '".$url."', '".$resumo."', '".$resolve."', '".$recurso."', '".$consideracoes."', '".$entrega."', '".$acompanhamento."');";
 
         if($conn->query($sql)){
-            if(isset($_POST['coordMun'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Coordenadoria Municipal do Sistema de Atenção às Urgências')";
-                if($conn->query($sql)){
+            $idRegistro = $conn->insert_id;
+            // Superintendências
+            if(isset($_POST['sup'])) {
+                foreach ($_POST['sup'] as $value)
+                {
+                    switch ($value)
+                    {
+                        case "coordMun":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Coordenadoria Municipal do Sistema de Atenção às Urgências')";
+                            break;
+                        
+                        case "ouvidSMS":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Ouvidoria da Secretaria Municipal de Saúde')";
+                            break;
+                        
+                        case "supAcoes":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Superintendência de Ações em Saúde')";
+                            break;
 
-                }else{}
+                        case "supAdm":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Superintendência de Administração em Saúde')";
+                            break;
+
+                        case "supAssist":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Superintendência de Assistência Farmacêutica, Insumos e Nutrição')";
+                            break;
+
+                        case "supAtSec":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Superintendência de Atenção Secundária')";
+                            break;
+
+                        case "supAtTerc":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Superintendência de Atenção Terciária')";
+                            break;
+
+                        case "supPlan":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Superintendência de Planejamento e Finanças')";
+                            break;
+                        
+                        case "supReg":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Superintendência de Regulação')";
+                            break;
+
+                        case "supVig":
+                            $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$idRegistro."', 'Superintendência de Vigilância em Saúde')";
+                            break;
+
+                        default: 
+                            break;
+                    }
+                    if($conn->query($sql)){
+
+                    }else{}
+                }
             }
-            if(isset($_POST['ouvidSMS'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Ouvidoria da Secretaria Municipal de Saúde')";
-                if($conn->query($sql)){
-
-                }else{}
-            }
-            if(isset($_POST['supAcoes'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Superintendência de Ações em Saúde')";
-                if($conn->query($sql)){
-
-                }else{}
-            }
-            if(isset($_POST['supAdm'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Superintendência de Administração em Saúde')";
-                if($conn->query($sql)){
-
-                }else{}
-            }
-            if(isset($_POST['supAssist'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Superintendência de Assistência Farmacêutica, Insumos e Nutrição')";
-                if($conn->query($sql)){
-
-                }else{}
-            }
-            if(isset($_POST['supAtSec'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Superintendência de Atenção Secundária')";
-                if($conn->query($sql)){
-
-                }else{}
-            }
-            if(isset($_POST['supAtTerc'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Superintendência de Atenção Terciária')";
-                if($conn->query($sql)){
-
-                }else{}
-            }
-            if(isset($_POST['supPlan'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Superintendência de Planejamento e Finanças')";
-                if($conn->query($sql)){
-
-                }else{}
-            }
-            if(isset($_POST['supReg'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Superintendência de Regulação')";
-                if($conn->query($sql)){
-
-                }else{}
-            }
-            if(isset($_POST['supVig'])){
-                $sql = "INSERT INTO `superintendencia` (`SUP_ID`, `REGISTRO_ID`, `NOME`) VALUES (NULL, '".$numero."', 'Superintendência de Vigilância em Saúde')";
-                if($conn->query($sql)){
-
-                }else{}
-            }
-
             echo"<script language='javascript' type='text/javascript'>
                 alert('Registro inserido com sucesso!');
                 window.location.href='../registro.php';
             </script>";
-        }else{
+        }
+        else {
             echo"<script language='javascript' type='text/javascript'>
                 alert('Erro!');
             </script>";
         }
         $conn->close();
-        
     }
 ?>

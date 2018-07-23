@@ -7,13 +7,13 @@ $(document).ready(function() {
 		},
 				
 		fields: {
-			checkboxes: {
-				validators: {
-					required: {
-						message: 'Por favor, insira o usuário'
-					},
-				}
-			},
+			// 'sup[]': {
+			// 	validators: {
+			// 		required: {
+			// 			message: 'Por favor, selecione pelo menos uma das opções'
+			// 		},
+			// 	}
+			// },
 			assunto: {
 				validators: {
 					notEmpty: {
@@ -77,6 +77,13 @@ $(document).ready(function() {
 						message: 'Por favor, insira o receptor'
 					},
 				}
+			},
+			acompanhamento: {
+				validators: {
+					notEmpty: {
+						message: 'Por favor, insira o acompanhamento'
+					}
+				}
 			},				   
 		}
 	})
@@ -99,4 +106,33 @@ $(document).ready(function() {
 			console.log(result);
 		}, 'json');
 	});
+
+	$('#btnHide').click(function () {
+		//$('td:nth-child(2)').hide();
+		// if your table has header(th), use this
+		$('td:nth-child(3),th:nth-child(3)').hide();
+	});
+  
+	$('.editbtn').click(function () {
+		var currentTD = $(this).parents('tr').find('td');
+		if ($(this).html() == 'Edit') {
+			currentTD = $(this).parents('tr').find('td');
+			$.each(currentTD, function () {
+				$(this).prop('contenteditable', true)
+			});
+		} else {
+			$.each(currentTD, function () {
+				$(this).prop('contenteditable', false)
+			});
+		}
+
+		$(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+
+	});
+
+	$(document).on("click", ".delete", function(){
+        $(this).parents("tr").remove();
+		$(".add-new").removeAttr("disabled");
+    });
+
 });

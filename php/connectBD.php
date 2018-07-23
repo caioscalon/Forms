@@ -1,13 +1,13 @@
 <?php
 
     $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "forms";
+    $username = "forms_user";
+    $password = "L5xzCW4U";
+    $dbname = "sms_forms";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    //mysqli_set_charset($conn, "utf8");
+    
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

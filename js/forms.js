@@ -10,9 +10,9 @@ $(document).ready(function(){
   $(this).attr("disabled", "disabled");
   var index = $("table tbody tr:last-child").index();
       var row = '<tr>' +
-          '<td>' + data + '</td>' +
-          '<td>' + status + '</td>' +
-          '<td>' + obs + '</td>' +
+          '<td style="padding-right: 40px; padding-left: 20px">' + data + '</td>' +
+          '<td style="padding-right: 25px">' + status + '</td>' +
+          '<td style="padding-right: 25px">' + obs + '</td>' +
           '<td>' + actions + '</td>' +
       '</tr>';
     $("table").append(row);		

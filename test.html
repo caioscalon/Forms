@@ -1,96 +1,47 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Forms SMS </title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/forms.css" rel="stylesheet" type="text/css" media="all"/>	
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  </head>
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title> Teste </title>
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-  <a href="index.html"><button type="button"> Voltar </button></a>
-
-	<div class="container">
-		<div class="col-lg-9">
-			<form class="form-horizontal" action=" " method="post"  id="reg_form">
-				<fieldset>
-					<!-- Form Name -->
-					<legend> Preencha os campos </legend>
+  <body>
     
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-md-4 control-label"> Usuário </label>
-						<div class="col-md-6  inputGroupContainer">
-							<div class="input-group"> 
-								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-								<input name="usuario" placeholder="Insira seu usuário..." class="form-control" type="text">
-							</div>
-						</div>
-					</div>
-
-					<!-- Text input-->
-					<div class="form-group has-feedback">
-						<label for="senha"  class="col-md-4 control-label"> Senha: </label>
-						<div class="col-md-6  inputGroupContainer">
-							<div class="input-group"> 
-								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-								<input class="form-control" id="senha" type="password" placeholder="Insira sua senha..." 
-									name="senha" data-minLength="5"
-									data-error="some error"
-									required/>
-								<span class="glyphicon form-control-feedback"></span>
-								<span class="help-block with-errors"></span>
-							</div>
-						</div>
-    			</div>
- 
-					<!-- Text input-->
-					<div class="form-group has-feedback">
-						<label for="confirmarSenha"  class="col-md-4 control-label">	Confirme sua senha: </label>
-						<div class="col-md-6  inputGroupContainer">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-								<input class="form-control {$borderColor}" id="userPw2" type="password" placeholder="Confirme sua senha..." 
-									name="confirmarSenha" data-match="#confirmarSenha" data-minLength="5"
-									data-match-error="some error 2"
-									required/>
-									<span class="glyphicon form-control-feedback"></span>
-									<span class="help-block with-errors"></span>
-							</div>
-						</div>
-					</div>
+    <div class="container">
+      <h2>Modal Example</h2>
+      <!-- Trigger the modal with a button -->
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+    
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+              <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
       
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-md-4 control-label"> Código: </label>
-						<div class="col-md-6  inputGroupContainer">
-							<div class="input-group"> 
-								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-								<input name="codigo" placeholder="Insira seu código..." class="form-control"  type="text">
-							</div>
-						</div>
-					</div>     
-     
-					<!-- Button -->
-					<div class="form-group">
-						<label class="col-md-4 control-label"></label>
-						<div class="col-md-4">
-							<button type="submit" class="btn btn-warning" > OK <span class="glyphicon glyphicon-send"></span></button>
-						</div>
-					</div>
-    		</fieldset>
-  		</form>
-		</div>
-	</div>
+    </div>
+      
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src='./js/bootstrapvalidator.min.js'></script>
+    <script src="./js/test.js"></script>
 
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
-	<script src="js/index.js"></script>
-
-</body>
-</html>
+  </body>
+</html>                            
