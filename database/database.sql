@@ -35,14 +35,14 @@ CREATE TABLE superintendencia(
 
 );
 
--- CREATE TABLE acompanhamento(
---     ACOMP_ID        INTEGER NOT NULL AUTO_INCREMENT,
---     REGISTRO_ID     INTEGER NOT NULL,
---     DATA_           DATE NOT NULL,
---     STATUS_         VARCHAR(32) NOT NULL,
---     OBS             VARCHAR(128) NOT NULL,
+CREATE TABLE acompanhamento(
+    ACOMP_ID        INTEGER NOT NULL AUTO_INCREMENT,
+    REGISTRO_ID     INTEGER NOT NULL,
+    DATA_           VARCHAR(16) NOT NULL,
+    STATUS_         VARCHAR(32) NOT NULL,
+    OBS             VARCHAR(128) NOT NULL,
 
---     PRIMARY KEY (ACOMP_ID),
---     FOREIGN KEY (REGISTRO_ID) REFERENCES registro (REGISTRO_ID)
--- )
+    PRIMARY KEY (ACOMP_ID),
+    FOREIGN KEY (REGISTRO_ID) REFERENCES registro (REGISTRO_ID)
+)
 

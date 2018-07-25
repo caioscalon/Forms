@@ -1,22 +1,25 @@
 <?php
   require_once "./connectBD.php";
 
-  $nome = $_POST['usuario'];
-  $senha = md5($_POST['senha']);
+  // Variáveis
+  $nome = $_POST['usuarioInd'];
+  $senha = md5($_POST['senhaInd']);
   $login = $_POST['btnLog'];
   
-  if(isset($login)){
+  if (isset($login)) {
+    // Login
     $sql = "SELECT * FROM usuario WHERE NOMEUSUARIO = '$nome' AND SENHA = '$senha'";
     $result = $conn->query($sql);
 
-    if ($result->num_rows <= 0){
+    if ($result->num_rows <= 0) {
       echo
       "<script language='javascript' type='text/javascript'>
         alert('Login ou senha inválido!');
         window.location.href='../index.html';
       </script>";
       die();
-    }else{
+    }
+    else {
       $row = $result->fetch_assoc();        
       echo
       "<script language='javascript' type='text/javascript'>
@@ -31,6 +34,5 @@
       //header("Location:../index.html");
     }
     $conn->close();
-      
   }
 ?>

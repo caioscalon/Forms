@@ -61,6 +61,11 @@
               </a>
             </li>
             <li>
+              <a href="acomp.php">
+                <span class="glyphicon glyphicon-arrow-right"></span> Acompanhamento 
+              </a>
+            </li>
+            <li>
               <a href="registro.php">
                 <span class="glyphicon glyphicon-floppy-disk"></span> Registro 
               </a>
@@ -99,13 +104,13 @@
           </div>
 
           <div class="main-login main-center">
-            <form class="form-horizontal" action="./php/cadastro.php" method="POST" id="reg_form"> 
+            <form class="form-horizontal" action="./php/cadastro.php" method="POST" id="registro_form"> 
               <div class="form-group">
                 <label class="cols-sm-2 control-label" for="usuario"> Usuário: </label>
                 <div class="cols-sm-10">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input class="form-control" name="usuario" placeholder="Insira seu usuário..." type="text">
+                    <input class="form-control" type="text"name="usuario" placeholder="Insira seu usuário...">
                   </div>
                 </div>
               </div>
@@ -166,7 +171,7 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src='./js/bootstrapvalidator.min.js'></script>
-    <script src="./js/cadastro.js"></script>
+    <script src="./js/validator.js"></script>
 
   </body>
 </html>

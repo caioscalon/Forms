@@ -27,8 +27,6 @@
     <title> Forms SMS </title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/forms.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="css/info.css" rel="stylesheet" type="text/css" media="all"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   </head>
@@ -66,7 +64,12 @@
               <?php
                 if(($_COOKIE["idLOgado"] === "11146")) {
                   echo 
-                  "<li class=\"active\">
+                  "<li>
+                    <a href=\"acomp.php\">
+                      <span class=\"glyphicon glyphicon-arrow-right\"></span> Acompanhamento
+                    </a>
+                  </li>
+                  <li class=\"active\">
                     <a href=\"#\">
                       <span class=\"glyphicon glyphicon-floppy-disk\"></span> Registro 
                     </a>
@@ -74,7 +77,12 @@
                 }
                 else if(($_COOKIE["idLOgado"] === "11147")) {
                   echo 
-                  "<li class=\"active\">
+                  "<li>
+                    <a href=\"acomp.php\">
+                      <span class=\"glyphicon glyphicon-arrow-right\"></span> Acompanhamento
+                    </a>
+                  </li>
+                  <li class=\"active\">
                     <a href=\"#\">
                       <span class=\"glyphicon glyphicon-floppy-disk\"></span> Registro 
                     </a>
@@ -222,9 +230,9 @@
                   <label><input type="radio" name="optradio" id="resolucao" value="Resolução"> Resolução </label>
                 </div>
 
-                <div class="radio">
-                  <label><input type="radio" name="optradio" id="outro" value="Outro"> Outro </label> <!-- Caixa de texto -->
-                </div>
+                <!--div class="radio">
+                  <label><input type="radio" name="optradio" id="outro" value="Outro"> Outro </label>
+                </div-->
               </div>
             </div>
 
@@ -244,7 +252,7 @@
               <div class="bs-callout bs-callout-danger">
                 <!-- Número -->
                 <label><h4><b> Número: </b></h4></label>
-                <input type='text' class="form-control" name="numero" id="numero" placeholder="Insira o número..." maxlength="16"></input>
+                <input type='text' class="form-control" name="numero" id="numero" placeholder="Insira o número..." maxlength="6" onkeypress="return AllowNumbersOnly(event)"></input>
               </div>
             </div>  
 
@@ -254,31 +262,9 @@
               <div class="bs-callout bs-callout-danger">
                 <!-- Data -->
                 <label><h4><b> Data: </b></h4></label>
-                <input type='text' class="form-control" id="dataReg" name="dataReg" placeholder="dd/mm/aaaa"/ maxlength="16">
-                <!-- <div class='input-group date'> -->
-                  <!-- <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                  </span> -->
-                <!-- </div> -->
+                <input type='text' class="form-control" id="dataReg" name="dataReg" placeholder="dd/mm/aaaa"/ maxlength="10" data-mask="00/00/0000" onkeypress="return AllowNumbersOnly(event)">
               </div>
-            </div>
-
-            <!--?php
-              echo 
-              "<script>
-                $(document).ready(function(){
-                  var date_input=$('input[name=\"dataReg\"]'); //our date input has the name \"dataReg\"
-                  var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : \"body\";
-                  var options={
-                    format: 'dd/mm/yyyy',
-                    container: container,
-                    todayHighlight: true,
-                    autoclose: true,
-                  };
-                  date_input.datepicker(options);
-                })
-              </script>";
-            ?-->
+              </div>
 
             <hr>
 
@@ -346,103 +332,7 @@
               <div class="bs-callout bs-callout-danger">
                 <!-- Acompanhamento -->
                 <label style="padding-right: 700px"><h4><b> Acompanhamento <small>(Data, Situação, Observações)</small>: </b></h4></label>
-                <textarea class="form-control" rows="5" name="acompanhamento" id="acompanhamento" placeholder="Insira o acompanhamento..." maxlength="512"></textarea>
-
-                <!-- <button type="button" class="btn btn-info add-new" style="border-radius: 40px"><small><span class="glyphicon glyphicon-plus"></span><b> Novo acompanhamento </b></small></button>
-                <table class="table table-striped table-responsive" id="acomp">
-                  <thead>
-                    <tr>
-                      <th class="col-sm-2"> Data </th>
-                      <th class="col-sm-2"> Status </th>
-                      <th class="col-sm-3"> Observações </th>
-                      <th class="col-sm-1"> + </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style="padding-left: 20px; padding-right: 40px">
-                        <div class="form-group">
-                          <input type="text" class="form-control" placeholder="dd/mm/aaaa" id="dataAcomp" name="dataAcomp"/>
-                        </div>
-                      </td>
-
-                      <td style="padding-right: 25px">
-                        <div class="form-group">
-                          <select class="form-control" id="status" name="status"/>
-                            <option name="andamento"> Em andamento </option>
-                            <option name="finalizado"> Finalizado </option>
-                            <option name="repassado"> Repassado </option>
-                            <option name="recusado"> Recusado </option>
-                          </select>
-                        </div>
-                      </td>
-
-                      <td style="padding-right: 25px">
-                        <textarea class="form-control" id="obsAcomp" name="obsAcomp" placeholder="Insira a observacao..."/></textarea>
-                      </td>
-
-                      <td>
-                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div> -->
-              
-              <!-- <div class="bs-callout bs-callout-danger">
-                <label style="padding-right: 700px"><h4><b> Acompanhamento: </b></h4></label>
-                <button type="button" class="btn btn-info add-new" style="border-radius: 40px"><small><span class="glyphicon glyphicon-plus"></span> Novo acompanhamento </small></button>
-
-                <table class="table table-striped table-responsive">
-                  <thead>
-                    <tr>
-                      <th class="col-sm-2"> Data </font></th>
-                      <th class="col-sm-3"> Status </font></th>
-                      <th class="col-sm-4"> Observações </font></th>
-                      <th class="col-sm-1"> + </font></th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td style="padding-right: 40px">
-                        <div class="form-group">
-                          <div class="input-group date" id="datetimepicker1">
-                            <input type="text" class="form-control" placeholder="dd/mm/aaaa" name="data"/>
-                            <span class="input-group-addon">
-                              <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td style="padding-right: 25px">
-                        <div class="form-group">
-                          <select class="form-control" id="status" name="status"/>
-                            <option> Em andamento </option>
-                            <option> Finalizado </option>
-                            <option> Repassado </option>
-                            <option> Recusado </option>
-                          </select>
-                        </div>
-                      </td>
-
-                      <td style="padding-right: 25px">
-                        <textarea class="form-control" id="obs" name="obs" placeholder="Insira a observacao..."/></textarea>
-                      </td>
-
-                      <td>
-                        <a class="add" title="Add" data-toggle="tooltip"><span class="glyphicon glyphicon-ok"></span></a>
-                        <a class="edit" title="Edit" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a>
-                      </td>
-                    </tr>    
-                  </tbody>
-                </table>
-              </div> -->
-              
+                <textarea class="form-control" rows="5" name="acompanhamento" id="acompanhamento" placeholder="Insira o acompanhamento..." maxlength="512"></textarea>              
             </div>
           </div>
 
@@ -461,6 +351,10 @@
 
     <br><br>
 
+    <button class="btn btn-primary" onclick="topFunction()" id="myBtn" title="Ir para o topo">
+      <span class="glyphicon glyphicon-chevron-up"></span> 
+    </button>
+
     <!-- Rodapé -->
     <footer>
       <p><font size="3"> Em desenvolvimento </font></p>
@@ -468,10 +362,12 @@
 
     <!-- Scripts -->
     <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.mask.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src='./js/bootstrapvalidator.min.js'></script>
+    <script src="./js/validator.js"></script>
     <script src="./js/forms.js"></script>
-    <script src="./js/registro.js"></script>
 
   </body>
 </html>

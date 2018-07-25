@@ -1,18 +1,15 @@
 <?php
   require_once "./connectBD.php";
 
-  if(isset($_POST['btnPes'])) {
+  if (isset($_POST['btnPes'])) {
+    // Variáveis
     $sup = $_POST['super'];
     $tipo = $_POST['status'];
     $ano = $_POST['ano'];
     $numero = $_POST['numero'];
 
     // Sup == Todos && Tipo == Todos
-    if($sup === "Todas" && $tipo === "Todos" && $ano === "" && $numero === "") {
-      // echo 
-      // "<script language='javascript' type='text/javascript'>
-      //   alert('".$sup." / ".$tipo." / ".$ano." / ".$numero."');
-      // </script>";
+    if ($sup === "Todas" && $tipo === "Todos" && $ano === "" && $numero === "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -24,7 +21,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup==="Todas" && $tipo==="Todos" && $ano!="" && $numero==="") {
+    else if ($sup === "Todas" && $tipo === "Todos" && $ano != "" && $numero === "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -36,7 +33,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup==="Todas" && $tipo==="Todos" && $ano==="" && $numero!="") {
+    else if ($sup === "Todas" && $tipo === "Todos" && $ano === "" && $numero != "" ) {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -48,7 +45,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup==="Todas" && $tipo==="Todos" && $ano!="" && $numero!="") {
+    else if ($sup === "Todas" && $tipo === "Todos" && $ano != "" && $numero != "" ) {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -62,7 +59,7 @@
     }
 
     // Sup == Todos && Tipo != Todos
-    else if($sup==="Todas" && $tipo!="Todos" && $ano==="" && $numero==="") {
+    else if ($sup === "Todas" && $tipo != "Todos" && $ano === "" && $numero === "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -74,7 +71,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup==="Todas" && $tipo!="Todos" && $ano!="" && $numero==="") {
+    else if ($sup === "Todas" && $tipo != "Todos" && $ano != "" && $numero === "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -86,7 +83,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup==="Todas" && $tipo!="Todos" && $ano==="" && $numero!="") {
+    else if ($sup === "Todas" && $tipo != "Todos" && $ano === "" && $numero != "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -98,7 +95,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup==="Todas" && $tipo!="Todos" && $ano!="" && $numero!="") {
+    else if ($sup === "Todas" && $tipo != "Todos" && $ano != "" && $numero != "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -112,7 +109,7 @@
     }
 
     // Sup != Todos && Tipo == Todos
-    else if($sup!="Todas" && $tipo==="Todos" && $ano==="" && $numero==="") {
+    else if ($sup != "Todas" && $tipo === "Todos" && $ano === "" && $numero === "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -124,7 +121,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup!="Todas" && $tipo==="Todos" && $ano!="" && $numero==="") {
+    else if ($sup != "Todas" && $tipo === "Todos" && $ano != "" && $numero=== "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -136,7 +133,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup!="Todas" && $tipo==="Todos" && $ano==="" && $numero!="") {
+    else if ($sup != "Todas" && $tipo === "Todos" && $ano === "" && $numero != "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -148,7 +145,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup!="Todas" && $tipo==="Todos" && $ano!="" && $numero!="") {
+    else if ($sup != "Todas" && $tipo === "Todos" && $ano != "" && $numero != "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -162,7 +159,7 @@
     }
 
     // Sup != Todos && Tipo != Todos
-    else if($sup!="Todas" && $tipo!="Todos" && $ano==="" && $numero==="") {
+    else if ($sup != "Todas" && $tipo != "Todos" && $ano === "" && $numero === "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -174,7 +171,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup!="Todas" && $tipo!="Todos" && $ano!="" && $numero==="") {
+    else if ($sup != "Todas" && $tipo != "Todos" && $ano != "" && $numero === "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -186,7 +183,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup!="Todas" && $tipo!="Todos" && $ano==="" && $numero!="") {
+    else if ($sup != "Todas" && $tipo != "Todos" && $ano === "" && $numero != "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";
@@ -198,7 +195,7 @@
         window.open(\"../busca.php\",\"_self\");
       </script>";
     }
-    else if($sup!="Todas" && $tipo!="Todos" && $ano!="" && $numero!="") {
+    else if ($sup != "Todas" && $tipo != "Todos" && $ano != "" && $numero != "") {
       echo 
       "<script language='javascript' type='text/javascript'>
         var cname = \"buscaQUERY\";

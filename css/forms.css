@@ -96,101 +96,6 @@ p {
 	text-align: center;
 }
 
-.table-wrapper {
-  margin: -100px auto;
-  background: #fff;
-  padding: 20px;	
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
-
-.table-title {
-  padding-bottom: 10px;
-  margin: 0 0 10px;
-}
-
-.table-title h2 {
-  margin: 6px 0 0;
-  font-size: 22px;
-}
-
-.table-title .add-new {
-  float: right;
-  height: 30px;
-  font-weight: bold;
-  font-size: 12px;
-  text-shadow: none;
-  min-width: 100px;
-  border-radius: 50px;
-  line-height: 13px;
-}
-
-.table-title .add-new i {
-  margin-right: 4px;
-}
-
-table.table {
-  table-layout: fixed;
-}
-
-table.table tr th, table.table tr td {
-  border-color: #e9e9e9;
-}
-
-table.table th i {
-  font-size: 13px;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-table.table th:last-child {
-  width: 100px;
-}
-
-table.table td a {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 5px;
-  min-width: 24px;
-}  
-
-table.table td a.add {
-  color: #27C46B;
-}
-
-table.table td a.edit {
-  color: #FFC107;
-}
-
-table.table td a.delete {
-  color: #E34724;
-}
-
-table.table td i {
-  font-size: 19px;
-}
-
-table.table td a.add i {
-  font-size: 24px;
-  margin-right: -1px;
-  position: relative;
-  top: 3px;
-}    
-
-table.table .form-control {
-  height: 32px;
-  line-height: 17px;
-  box-shadow: none;
-  border-radius: 2px;
-}
-
-table.table .form-control.error {
-  border-color: #f50000;
-}
-
-table.table td .add {
-  display: none;
-}
-
 div.form-group{
   margin-bottom: 23px;
 }
@@ -199,6 +104,58 @@ div.has-error{
   margin-bottom: -8px;
 } 
 
+.page-header{
+  text-align: center;    
+}
+
 .bs-callout {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #eee;
+  border-image: none;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px 1px 1px 5px;
+  margin-bottom: 0;
   padding: 20px;
+}
+.bs-callout:last-child {
+  margin-bottom: 0px;
+}
+.bs-callout h4 {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.bs-callout-danger {
+  border-left-color: #2d9b45;
+}
+
+.bs-callout-danger h4{
+  color: #2d9b45;
+}
+
+.resume .list-group-item:first-child, .resume .list-group-item:last-child{
+  border-radius:0;
+}
+
+.panel-heading {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  line-height: 10px;
+  bottom: 150px;
+  right: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 20%;
 }

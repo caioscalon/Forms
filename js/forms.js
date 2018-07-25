@@ -1,45 +1,28 @@
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-  var data = $("table td:first-child").html();
-  var status = $("table td:first-child + td").html();
-  var obs = $("table td:first-child + td + td").html();
-  var actions = $("table td:last-child").html();
+// Permite a inserção apenas de caracteres numéricos
+AllowNumbersOnly = function (e) {
+  var unicode = e.keyCode ? e.keyCode : e.charCode
+  if (unicode >= 48 && unicode <= 57) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
-  // Append table with add row form on add new button click
-  $(".add-new").click(function(){
-  $(this).attr("disabled", "disabled");
-  var index = $("table tbody tr:last-child").index();
-      var row = '<tr>' +
-          '<td style="padding-right: 40px; padding-left: 20px">' + data + '</td>' +
-          '<td style="padding-right: 25px">' + status + '</td>' +
-          '<td style="padding-right: 25px">' + obs + '</td>' +
-          '<td>' + actions + '</td>' +
-      '</tr>';
-    $("table").append(row);		
-  $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
-      $('[data-toggle="tooltip"]').tooltip();
-  });
+// Quando o usuário dá scroll down de 80px do topo da página, exibe o botão
+window.onscroll = function() { 
+  scrollFunction() 
+};
 
-  // Add row on add button click
-  $(document).on("click", ".add", function(){
-    var empty = false;
-    var input = $(this).parents("tr").find('input[type="text"]');
-        input.each(function(){
-      if(!$(this).val()){
-        $(this).addClass("error");
-        empty = true;
-      }else{
-        $(this).removeClass("error");
-      }
-  });
+function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
 
-  $(this).parents("tr").find(".error").first().focus();
-  if(!empty){
-    input.each(function(){
-      $(this).parent("td").html($(this).val());
-    });			
-    $(this).parents("tr").find(".add, .edit").toggle();
-    $(".add-new").removeAttr("disabled");
-  }		
-  });
-});
+// Quando o usuário clicar no botão, dá scroll para o topo da página
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}

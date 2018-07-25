@@ -65,6 +65,11 @@
               if(($_COOKIE["idLOgado"] === "11146")) {
                 echo 
                 "<li>
+                  <a href=\"acomp.php\">
+                    <span class=\"glyphicon glyphicon-arrow-right\"></span> Acompanhamento
+                  </a>
+                </li>
+                <li>
                   <a href=\"registro.php\">
                     <span class=\"glyphicon glyphicon-floppy-disk\"></span> Registro 
                   </a>
@@ -72,6 +77,11 @@
               } else if (($_COOKIE["idLOgado"] === "11147")) {
                 echo 
                 "<li>
+                  <a href=\"acomp.php\">
+                    <span class=\"glyphicon glyphicon-arrow-right\"></span> Acompanhamento
+                  </a>
+                </li>
+                <li>
                   <a href=\"registro.php\">
                     <span class=\"glyphicon glyphicon-floppy-disk\"></span> Registro 
                   </a>
@@ -141,7 +151,7 @@
                 <option value="Nota Técnica"> Nota Técnica </option>
                 <option value="Portaria"> Portaria </option>
                 <option value="Resolução"> Resolução </option>
-                <option value="Outro"> Outro </option>
+                <!--option value="Outro"> Outro </option-->
               </select>
             </div>
 
@@ -150,14 +160,14 @@
             <!-- Nome -->
             <label><font size="2"> Ano: </font></label>
             <div class="form-group">
-            <textarea class="form-control" rows="1" name="ano" id="ano" placeholder="Insira o ano..."></textarea>  </div>
+            <input class="form-control" rows="1" name="ano" id="ano" placeholder="Insira o ano..."></input>  </div>
 
             &nbsp; &nbsp; &nbsp;
 
             <!-- Número -->
             <label><font size="2"> Número: </font></label>
             <div class="form-group">
-            <textarea class="form-control" rows="1" name="numero" id="numero" placeholder="Insira o número..."></textarea>  </div>
+            <input class="form-control" rows="1" name="numero" id="numero" placeholder="Insira o número..."></input>  </div>
 
             <hr>
             
@@ -251,13 +261,13 @@
                           <div class=\"col-md-12 col-xs-offset-0\">
                             <table class=\"table table-striped\">
                               <thead>
-                                  <tr>
+                                <tr>
                                   <th class=\"col-sm-2\" scope=\"col\">Número</th>
                                   <th class=\"col-sm-2\" scope=\"col\">Tipo</th>
                                   <th class=\"col-sm-2\" scope=\"col\">Data</th>
                                   <th class=\"col-sm-4\" scope=\"col\">Assunto</th>
                                   <th class=\"col-sm-1\" scope=\"col\"></th>
-                                  </tr>
+                                </tr>
                               </thead>";
                     }
 
@@ -282,6 +292,16 @@
                             var expires = \"expires=\"+ d.toUTCString();
                             document.cookie = cname + \"=\" + cvalue + \";\" + expires + \";path=/\";;
                             window.open(\"./info.php\",\"_self\");
+                          };
+
+                          document.getElementById('acompRegistro".$count."').onclick = function() {
+                            var cname = \"idREGISTRO\";
+                            var cvalue = ". $row["REGISTRO_ID"]. ";
+                            var d = new Date();
+                            d.setTime(d.getTime() + (10*60*2000));
+                            var expires = \"expires=\"+ d.toUTCString();
+                            document.cookie = cname + \"=\" + cvalue + \";\" + expires + \";path=/\";;
+                            window.open(\"./busca.php\",\"_self\");
                           };
                         </script>
 
@@ -319,6 +339,16 @@
                             var expires = \"expires=\"+ d.toUTCString();
                             document.cookie = cname + \"=\" + cvalue + \";\" + expires + \";path=/\";;
                             window.open(\"./edit.php\",\"_self\");
+                          };
+
+                          document.getElementById('acompRegistro".$count."').onclick = function() {
+                            var cname = \"idREGISTRO\";
+                            var cvalue = ". $row["REGISTRO_ID"]. ";
+                            var d = new Date();
+                            d.setTime(d.getTime() + (10*60*2000));
+                            var expires = \"expires=\"+ d.toUTCString();
+                            document.cookie = cname + \"=\" + cvalue + \";\" + expires + \";path=/\";;
+                            window.open(\"./busca.php\",\"_self\");
                           };
                         </script>
 
@@ -359,6 +389,10 @@
 
     <br><br>
 
+    <button class="btn btn-primary" onclick="topFunction()" id="myBtn" title="Ir para o topo">
+      <span class="glyphicon glyphicon-chevron-up"></span> 
+    </button>
+
     <!-- Rodapé -->
     <footer>
       <p><font size="3"> Em desenvolvimento </font></p>
@@ -368,6 +402,7 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/forms.js"></script>
+    <script src="./js/geral.js"></script>
 
   </body>
 </html>

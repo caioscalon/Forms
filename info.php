@@ -26,10 +26,16 @@
   <head>
     <title> Forms SMS </title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="css/forms.css" rel="stylesheet" type="text/css" media="all"/>	
-    <link href="css/info.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/forms.css" rel="stylesheet" type="text/css" media="all"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <style>
+      .bs-callout {
+        margin-bottom: 15px;
+      }
+    </style>
+    
   </head>
 
   <body>
@@ -66,6 +72,11 @@
               if(($_COOKIE["idLOgado"] === "11146")) {
                 echo 
                 "<li>
+                  <a href=\"acomp.php\">
+                    <span class=\"glyphicon glyphicon-arrow-right\"></span> Acompanhamento
+                  </a>
+                </li>
+                <li>
                   <a href=\"registro.php\">
                     <span class=\"glyphicon glyphicon-floppy-disk\"></span> Registro 
                   </a>
@@ -74,6 +85,11 @@
               else if(($_COOKIE["idLOgado"] === "11147")) {
                 echo 
                 "<li>
+                  <a href=\"acomp.php\">
+                    <span class=\"glyphicon glyphicon-arrow-right\"></span> Acompanhamento
+                  </a>
+                </li>
+                <li>
                   <a href=\"registro.php\">
                     <span class=\"glyphicon glyphicon-floppy-disk\"></span> Registro 
                   </a>
@@ -219,8 +235,12 @@
             </div>
             </div>
             </div>
-            
-            <br><br>";
+
+            <br><br>
+
+            <div class=\"col-lg-11\">
+              <button type=\"button\" class=\"btn btn-primary btn-lg\" data-toggle=\"modal\" data-target=\"#exampleModalCenter\" style=\"float: right; border-radius:40px; display: flex;\" name=\"btnReg\" id=\"btnReg\"> <small> <span class=\"glyphicon glyphicon-plus\"></span>   Observação</small> </button>
+            </div>";
           }
         }
       }
@@ -238,6 +258,48 @@
       </script>";
     ?>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLongTitle">Nova observação</h4>
+          </div>
+          <div class="modal-body">
+            <form id="registro_form">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Data:</label>
+                <input type="text" class="form-control" id="dataAcomp" name="dataAcomp" placeholder="dd/mm/aaaa" maxlength="10" data-mask="00/00/0000" onkeypress="return AllowNumbersOnly(event)">
+              </div>
+              <div class="form-group" method="POST" action="./php/acomp.php" >
+                <label for="recipient-name" class="col-form-label">Status:</label>
+                <select class="form-control" id="statusAcomp" name="statusAcomp"/>
+                  <option value="Em andamento"> Em andamento </option>
+                  <option value="Repassado"> Repassado </option>
+                  <option value="Concluído"> Concluído </option>
+                  <option value="Recusado"> Recusado </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Observação:</label>
+                <textarea class="form-control" id="obsAcomp" name="obsAcomp" placeholder="Insira a observação..."></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"> Fechar </button>
+                <button type="submit" class="btn btn-primary" name="btnReg" id="btnReg"> Enviar </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="topFunction()" id="myBtn" title="Ir para o topo">
+      <span class="glyphicon glyphicon-chevron-up"></span> 
+    </button>
+
+    <br><br><br><br><br>
+
     <!-- Rodapé -->
     <footer>
       <p><font size="3"> Em desenvolvimento </font></p>
@@ -245,9 +307,12 @@
 
     <!-- Scripts -->
     <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.mask.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src='./js/bootstrapvalidator.min.js'></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/validator.js"></script>
+    <script src="./js/forms.js"></script>
 
   </body>
 </html>
